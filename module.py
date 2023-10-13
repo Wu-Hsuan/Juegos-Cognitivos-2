@@ -2,7 +2,7 @@ import random as rd
 
 #Calcula  la cantidad de barcos para llena mas de 50% del tablero
 min_nave = int(tamano*tamano*0.55/1)
-
+tamano = 8
 #Funcion que crea el tablero
 def creaMatriz(tamano):
   renglones = tamano
@@ -38,23 +38,66 @@ def muestra_tablero(tablero,tamano):
       print(tablero[fila][col],end = " ")
     print("")
 
-# Disparo diagonal inversa (‘\’)
-def DDI(fila,col):
-  tablero[fila][col] == "0"
-  tablero[fila-1][col-1] == "0"
-  tablero[fila+1][col+1] == "0"
 
-# Disparo dona (‘o’)
-def DD(fila,col):
-  tablero[fila-1][col-1] == "0"
-  tablero[fila][col-1] == "0"
-  tablero[fila+1][col-1] == "0"
-  tablero[fila-1][col] == "0"
-  tablero[fila+1][col] == "0"
-  tablero[fila-1][col+1] == "0"
-  tablero[fila][col+1] == "0"
-  tablero[fila+1][col+1] == "0"
+def diparos(matriz, tamaño):
+    d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
+    f= int(input("Introduce la coordanada de la fila: "))
+    c= int(input("Introduce la coordanada de la columna: "))
+  
+    # Disparo simple (‘-’)
+    if d=="-":
+        tablero[fila][col]== "0"
+    # Disparo en asterisco (‘*’)
+    elif d=="*":
+        tablero[fila][col]== "0"
+        tablero[fila-1][col-1]== "0"
+        tablero[fila][col-1]== "0"
+        tablero[fila+1][col-1]== "0"
+        tablero[fila][col+1]== "0"
+        tablero[fila-1][col]== "0"
+        tablero[fila-1][col+1]== "0"
+        tablero[fila][col+1]== "0"
+        tablero[fila+1][col+1]== "0"
+    # Disparo en cruz (‘+’)
+    elif d=="+":
+        tablero[fila][col]== "0"
+        tablero[fila-1][col]== "0"
+        tablero[fila+1][col]== "0"
+        tablero[fila][col-1]== "0"
+        tablero[fila][col+1]== "0"
+    # Disparo en equis (‘X’)
+    elif d=="X":
+        tablero[fila][col]== "0"
+        tablero[fila-1][col-1]== "0"
+        tablero[fila+1][col+1]== "0"
+        tablero[fila-1][col-10]== "0"
+        tablero[fila-1][col+1]== "0"
+    # Disparo en diagonal (‘/’)
+    elif d=="/":
+        tablero[fila][col]== "0"
+        tablero[fila-1][col+1]== "0"
+        tablero[fila+1][col-1]== "0"
+    # Disparo en diagonal inversa (‘\’)
+    elif d=="\\":
+        tablero[fila][col] == "0"
+        tablero[fila-1][col-1] == "0"
+        tablero[fila+1][col+1] == "0"
+    # Disparo de dona (‘o’)
+    elif d=="o":
+      tablero[fila-1][col-1] == "0"
+      tablero[fila][col-1] == "0"
+      tablero[fila+1][col-1] == "0"
+      tablero[fila-1][col] == "0"
+      tablero[fila+1][col] == "0"
+      tablero[fila-1][col+1] == "0"
+      tablero[fila][col+1] == "0"
+      tablero[fila+1][col+1] == "0"
+    else:
+      print("Disparo no existente")
 
-# Disparo simple (‘-’)
-def DS(fila,col):
-  tablero[fila][col] == "0"
+    
+
+m=Matriz(tamaño)
+tablero=coloca_barco(minimo_nave,m,tamaño)
+mostrar_tablero(tablero, tamaño) 
+diparos(m, tamaño)
