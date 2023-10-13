@@ -26,7 +26,19 @@ def coloca_barcos(min_nave,m,tamano):
       m[fila][col] = "X"
       barco_puesto += 1
   return m
+  
+#funcion que coloca barcos manuales:
+def coloca_barcosmanual(min_nave,m,tamano):
+  barco_puesto = 0
+  while barco_puesto < min_nave:
+    fila = int(input("Inserte la fila del barco: "))
+    col = int(input("Inserte la columna del barco: "))
+    if m[fila][col] == 0:
+      m[fila][col] = "X"
+      barco_puesto += 1
+  return m
 
+#Muestra la matriz como tablero
 def muestra_tablero(tablero,tamano):
   print(" ",end = " ")
   for i in range(tamano):
@@ -38,7 +50,7 @@ def muestra_tablero(tablero,tamano):
       print(tablero[fila][col],end = " ")
     print("")
 
-
+# Selecciona los disparos a esocoger con condiciones adicionales
 def diparos(matriz, tamaño):
     d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
     f= int(input("Introduce la coordanada de la fila: "))
