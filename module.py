@@ -50,7 +50,7 @@ def muestra_tablero(tablero,tamano):
       print(tablero[fila][col],end = " ")
     print("")
 
-# Selecciona los disparos a esocoger con condiciones adicionales
+# Selecciona de los diferentes disparos con condiciones adicionales
 def diparos(matriz, tamaño):
     d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
     f= int(input("Introduce la coordanada de la fila: "))
