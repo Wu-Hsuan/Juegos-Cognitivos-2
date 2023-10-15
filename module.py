@@ -53,8 +53,8 @@ def muestra_tablero(tablero,tamano):
 # Selecciona de los diferentes disparos con condiciones adicionales
 def diparos(matriz, tamaño):
     d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
-    f= int(input("Introduce la coordanada de la fila: "))
-    c= int(input("Introduce la coordanada de la columna: "))
+    fila = int(input("Introduce la coordanada de la fila: "))
+    col = int(input("Introduce la coordanada de la columna: "))
   
     # Disparo simple (‘-’)
     if d=="-":
@@ -106,10 +106,3 @@ def diparos(matriz, tamaño):
       tablero[fila+1][col+1] == "0"
     else:
       print("Disparo no existente")
-
-    
-
-m=Matriz(tamaño)
-tablero=coloca_barco(minimo_nave,m,tamaño)
-mostrar_tablero(tablero, tamaño) 
-diparos(m, tamaño)
