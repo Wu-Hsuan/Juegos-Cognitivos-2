@@ -32,4 +32,5 @@ else:
 
 
 
-#print(tablero)
+final = (35-borra)*10
+print("Your final grade is {}!".format(final))
