@@ -96,7 +96,7 @@ def disparos(tablero):
       tablero[fila][col]= "0"
       tablero[fila-1][col-1]= "0"
       tablero[fila+1][col+1]= "0"
-      tablero[fila-1][col-10]= "0"
+      tablero[fila+1][col-1]= "0"
       tablero[fila-1][col+1]= "0"
       return tablero
     else:
