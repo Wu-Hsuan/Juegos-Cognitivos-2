@@ -1,8 +1,10 @@
 import random as rd
 
+
+tamano = 8
 #Calcula  la cantidad de barcos para llena mas de 50% del tablero
 min_nave = int(tamano*tamano*0.55/1)
-tamano = 8
+
 #Funcion que crea el tablero
 def creaMatriz(tamano):
   renglones = tamano
@@ -26,7 +28,7 @@ def coloca_barcos(min_nave,m,tamano):
       m[fila][col] = "X"
       barco_puesto += 1
   return m
-  
+
 #funcion que coloca barcos manuales:
 def coloca_barcosmanual(min_nave,m,tamano):
   barco_puesto = 0
@@ -51,58 +53,67 @@ def muestra_tablero(tablero,tamano):
     print("")
 
 # Selecciona de los diferentes disparos con condiciones adicionales
-def diparos(matriz, tamaño):
-    d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
-    fila = int(input("Introduce la coordanada de la fila: "))
-    col = int(input("Introduce la coordanada de la columna: "))
-  
-    # Disparo simple (‘-’)
-    if d=="-":
-        tablero[fila][col]== "0"
-    # Disparo en asterisco (‘*’)
-    elif d=="*":
-        tablero[fila][col]== "0"
-        tablero[fila-1][col-1]== "0"
-        tablero[fila][col-1]== "0"
-        tablero[fila+1][col-1]== "0"
-        tablero[fila][col+1]== "0"
-        tablero[fila-1][col]== "0"
-        tablero[fila-1][col+1]== "0"
-        tablero[fila][col+1]== "0"
-        tablero[fila+1][col+1]== "0"
-    # Disparo en cruz (‘+’)
-    elif d=="+":
-        tablero[fila][col]== "0"
-        tablero[fila-1][col]== "0"
-        tablero[fila+1][col]== "0"
-        tablero[fila][col-1]== "0"
-        tablero[fila][col+1]== "0"
-    # Disparo en equis (‘X’)
-    elif d=="X":
-        tablero[fila][col]== "0"
-        tablero[fila-1][col-1]== "0"
-        tablero[fila+1][col+1]== "0"
-        tablero[fila-1][col-10]== "0"
-        tablero[fila-1][col+1]== "0"
-    # Disparo en diagonal (‘/’)
-    elif d=="/":
-        tablero[fila][col]== "0"
-        tablero[fila-1][col+1]== "0"
-        tablero[fila+1][col-1]== "0"
-    # Disparo en diagonal inversa (‘\’)
-    elif d=="\\":
-        tablero[fila][col] == "0"
-        tablero[fila-1][col-1] == "0"
-        tablero[fila+1][col+1] == "0"
-    # Disparo de dona (‘o’)
-    elif d=="o":
-      tablero[fila-1][col-1] == "0"
-      tablero[fila][col-1] == "0"
-      tablero[fila+1][col-1] == "0"
-      tablero[fila-1][col] == "0"
-      tablero[fila+1][col] == "0"
-      tablero[fila-1][col+1] == "0"
-      tablero[fila][col+1] == "0"
-      tablero[fila+1][col+1] == "0"
-    else:
-      print("Disparo no existente")
+def disparos(tablero):
+  d = (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
+  fila = int(input("Introduce la coordanada de la fila: "))-1
+  col = int(input("Introduce la coordanada de la columna: "))-1
+
+  # Disparo simple (‘-’)
+  if d=="-":
+    tablero[fila][col]= "0"
+    return tablero
+  # Disparo en asterisco (‘*’)
+  elif d=="*":
+    tablero[fila][col]= "0"
+    tablero[fila-1][col-1]= "0"
+    tablero[fila][col-1]= "0"
+    tablero[fila+1][col-1]= "0"
+    tablero[fila][col+1]= "0"
+    tablero[fila-1][col]= "0"
+    tablero[fila-1][col+1]= "0"
+    tablero[fila][col+1]= "0"
+    tablero[fila+1][col+1]= "0"
+    return tablero
+  # Disparo en cruz (‘+’)
+  elif d=="+":
+    tablero[fila][col]= "0"
+    tablero[fila-1][col]= "0"
+    tablero[fila+1][col]= "0"
+    tablero[fila][col-1]= "0"
+    tablero[fila][col+1]= "0"
+    return tablero
+  # Disparo en equis (‘X’)
+  elif d=="X":
+    tablero[fila][col]= "0"
+    tablero[fila-1][col-1]= "0"
+    tablero[fila+1][col+1]= "0"
+    tablero[fila-1][col-10]= "0"
+    tablero[fila-1][col+1]= "0"
+    return tablero
+  # Disparo en diagonal (‘/’)
+  elif d=="/":
+    tablero[fila][col]= "0"
+    tablero[fila-1][col+1]= "0"
+    tablero[fila+1][col-1]= "0"
+    return tablero
+  # Disparo en diagonal inversa (‘\’)
+  elif d=="\\":
+    tablero[fila][col] = "0"
+    tablero[fila-1][col-1]= "0"
+    tablero[fila+1][col+1] = "0"
+    return tablero
+  # Disparo de dona (‘o’)
+  elif d=="o":
+    tablero[fila-1][col-1] = "0"
+    tablero[fila][col-1] = "0"
+    tablero[fila+1][col-1] = "0"
+    tablero[fila-1][col] = "0"
+    tablero[fila+1][col] = "0"
+    tablero[fila-1][col+1] = "0"
+    tablero[fila][col+1] = "0"
+    tablero[fila+1][col+1] = "0"
+    return tablero
+  else:
+    print("Disparo no existente")
+    return tablero
+
