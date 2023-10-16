@@ -64,55 +64,79 @@ def disparos(tablero):
     return tablero
   # Disparo en asterisco (‘*’)
   elif d=="*":
-    tablero[fila][col]= "0"
-    tablero[fila-1][col-1]= "0"
-    tablero[fila][col-1]= "0"
-    tablero[fila+1][col-1]= "0"
-    tablero[fila][col+1]= "0"
-    tablero[fila-1][col]= "0"
-    tablero[fila-1][col+1]= "0"
-    tablero[fila][col+1]= "0"
-    tablero[fila+1][col+1]= "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila][col]= "0"
+      tablero[fila-1][col-1]= "0"
+      tablero[fila][col-1]= "0"
+      tablero[fila+1][col-1]= "0"
+      tablero[fila][col+1]= "0"
+      tablero[fila-1][col]= "0"
+      tablero[fila-1][col+1]= "0"
+      tablero[fila][col+1]= "0"
+      tablero[fila+1][col+1]= "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   # Disparo en cruz (‘+’)
   elif d=="+":
-    tablero[fila][col]= "0"
-    tablero[fila-1][col]= "0"
-    tablero[fila+1][col]= "0"
-    tablero[fila][col-1]= "0"
-    tablero[fila][col+1]= "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila][col]= "0"
+      tablero[fila-1][col]= "0"
+      tablero[fila+1][col]= "0"
+      tablero[fila][col-1]= "0"
+      tablero[fila][col+1]= "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   # Disparo en equis (‘X’)
   elif d=="X":
-    tablero[fila][col]= "0"
-    tablero[fila-1][col-1]= "0"
-    tablero[fila+1][col+1]= "0"
-    tablero[fila-1][col-10]= "0"
-    tablero[fila-1][col+1]= "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila][col]= "0"
+      tablero[fila-1][col-1]= "0"
+      tablero[fila+1][col+1]= "0"
+      tablero[fila-1][col-10]= "0"
+      tablero[fila-1][col+1]= "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   # Disparo en diagonal (‘/’)
   elif d=="/":
-    tablero[fila][col]= "0"
-    tablero[fila-1][col+1]= "0"
-    tablero[fila+1][col-1]= "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila][col]= "0"
+      tablero[fila-1][col+1]= "0"
+      tablero[fila+1][col-1]= "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   # Disparo en diagonal inversa (‘\’)
   elif d=="\\":
-    tablero[fila][col] = "0"
-    tablero[fila-1][col-1]= "0"
-    tablero[fila+1][col+1] = "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila][col] = "0"
+      tablero[fila-1][col-1]= "0"
+      tablero[fila+1][col+1] = "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   # Disparo de dona (‘o’)
   elif d=="o":
-    tablero[fila-1][col-1] = "0"
-    tablero[fila][col-1] = "0"
-    tablero[fila+1][col-1] = "0"
-    tablero[fila-1][col] = "0"
-    tablero[fila+1][col] = "0"
-    tablero[fila-1][col+1] = "0"
-    tablero[fila][col+1] = "0"
-    tablero[fila+1][col+1] = "0"
-    return tablero
+    if fila in range(1,7) and col in range(1,7):
+      tablero[fila-1][col-1] = "0"
+      tablero[fila][col-1] = "0"
+      tablero[fila+1][col-1] = "0"
+      tablero[fila-1][col] = "0"
+      tablero[fila+1][col] = "0"
+      tablero[fila-1][col+1] = "0"
+      tablero[fila][col+1] = "0"
+      tablero[fila+1][col+1] = "0"
+      return tablero
+    else:
+      print("¡No se puede usar este tipo de disparo en los bordes!")
+      return tablero
   else:
     print("Disparo no existente")
     return tablero
