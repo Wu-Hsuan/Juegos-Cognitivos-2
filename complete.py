@@ -30,17 +30,6 @@ def coloca_barco(minimo_nave,m,tamaño):
             barco_puesto+=1
     return m
 
-#Funcion que coloca barcos manuales:
-def coloca_barcosmanual(min_nave,m,tamano):
-  barco_puesto = 0
-  while barco_puesto < min_nave:
-    fila = int(input("Inserte la fila del barco: "))
-    col = int(input("Inserte la columna del barco: "))
-    if m[fila][col] == 0:
-      m[fila][col] = "X"
-      barco_puesto += 1
-  return m
-
 #Muestra la matriz como tablero
 def mostrar_tablero(tablero, tamaño):
     print("  ", end="")
@@ -55,7 +44,7 @@ def mostrar_tablero(tablero, tamaño):
 
 # Selecciona de los diferentes disparos con condiciones adicionales
 def disparos(matriz, tamaño):
-    d= (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
+    d= (input("Introduce el tipo de disparo: (o, *, -, +, \\, /, X)"))
     fila= int(input("Introduce la coordanada de la fila: "))
     col= int(input("Introduce la coordanada de la columna: "))
   
@@ -110,52 +99,61 @@ def disparos(matriz, tamaño):
     else:
         print("Disparo no existente")
     
-#Inicializar funciones de matriz
-m=Matriz(tamaño)
+    print(tablero)
+    
+#Función para escoger aleatoriamente el disparo en modo automático
+def tiro_random(minimo_nave,m,tamaño, disparos):
+    disp_rand=0
+    while disp_rand<minimo_nave:
+        lista_disparos = ["o","*","-","+","\\","/","X"]
+        disp_aleatorio = random.choice(lista_disparos)
+        print("Disparo actual: ", disp_aleatorio)
+        disp_rand+=1
+        disparos
+    return m
+
+
 
 #-------------------------Inicio del juego (menu)------------------------------
-modojuego=(input("Bienvenido a Batalla Naval: n\ Escoja el modo de juego: Automático (A) o Manual (M): "))
-if modojuego in "Aa":
-    print("Tendrás 35 oportunidades de ataque para eliminar todas las naves en la pantalla.")
-    print("El número restante de ataques se multiplica por diez y se convierte en tu puntuación final")
-    print("Por lo tanto, cuanto más ataques te queden, más alta será tu puntuación. ¡Aprovecha la oportunidad para eliminar las naves!")
-    minimo_nave = int(tamaño*tamaño*0.55/1)
-    
-    #Inicializar el tablero
-    tablero=coloca_barco(minimo_nave,m,tamaño)
-    mostrar_tablero(tablero, tamaño) 
-    disparos(m, tamaño)
-    
-    # Para acumular disparos
-    borra = 0
-    while True:
-      if "X" in tablero[0] or "X" in tablero[1] or "X" in tablero[2] or "X" in tablero[3] or "X" in tablero[4] or "X" in tablero[5] or "X" in tablero[6] or "X" in tablero[7]:
+def menu(m, tablero, mostrar_tablero, disparos, minimo_nave,tiro_random):
+    modojuego=(input("Bienvenido a Batalla Naval: \n Escoja el modo de juego: Automático (A) o Manual (M): "))
+    if modojuego in "Aa":
+        print("Se jugará solo en juego")
         tablero = disparos(tablero)
         mostrar_tablero(tablero,tamaño)
-        borra+=1
-      else: 
-        print("El juego ha terminado. Es hora de calcular la puntuación")
-        break
-elif modojuego in "Mm":
-    minimo_nave = int(input("Cuantos barcos quiere colocar; "))
+        tiro_random(minimo_nave, m, tamaño)
+        # Para acumular disparos
+        borra = 0
+        while True:
+            if "X" in tablero[0] or "X" in tablero[1] or "X" in tablero[2] or "X" in tablero[3] or "X" in tablero[4] or "X" in tablero[5] or "X" in tablero[6] or "X" in tablero[7]:
+                borra+=1
+            else: 
+                print("El juego ha terminado. Es hora de calcular la puntuación")
+                break
+    elif modojuego in "Mm":
+        print("Tendrás 35 oportunidades de ataque para eliminar todas las naves en la pantalla.")
+        print("El número restante de ataques se multiplica por diez y se convierte en tu puntuación final")
+        print("Por lo tanto, cuanto más ataques te queden, más alta será tu puntuación. ¡Aprovecha la oportunidad para eliminar las naves!")
+        mostrar_tablero(tablero, tamaño) 
+        disparos(m, tamaño)
+    
+        borra = 0
+        while True:
+            if "X" in tablero[0] or "X" in tablero[1] or "X" in tablero[2] or "X" in tablero[3] or "X" in tablero[4] or "X" in tablero[5] or "X" in tablero[6] or "X" in tablero[7]:
+                
+                borra+=1
+            else: 
+                print("El juego ha terminado. Es hora de calcular la puntuación")
+                break
+        else:
+            print("Escoga uno de los modos")
+            modojuego= (input("Bienvenido a Batalla Naval: n\ Escoja el modo de juego: Automático (A) o Manual (M): "))
+            
+    final = (35-borra)*10
+    print("Your final grade is {}!".format(final))
 
-    Tablero = coloca_barcosmanual(minimo_nave, m, tamaño)
-    mostrar_tablero(Tablero,tamaño)
-    disparos(m, tamaño)
-    borra = 0
-    while True:
-      if "X" in tablero[0] or "X" in tablero[1] or "X" in tablero[2] or "X" in tablero[3] or "X" in tablero[4] or "X" in tablero[5] or "X" in tablero[6] or "X" in tablero[7]:
-        tablero = disparos(tablero)
-        mostrar_tablero(tablero,tamaño)
-        borra+=1
-      else: 
-        print("El juego ha terminado. Es hora de calcular la puntuación")
-        break
-else:
-    print("Escoga uno de los modos")
-    modojuego= (input("Bienvenido a Batalla Naval: n\ Escoja el modo de juego: Automático (A) o Manual (M): "))
+#Inicializar el tablero
+m=Matriz(tamaño)
+tablero=coloca_barco(minimo_nave,m,tamaño)
+menu(m,tablero,mostrar_tablero,disparos, minimo_nave, tiro_random)
 
-
-
-final = (35-borra)*10
-print("Your final grade is {}!".format(final))
