@@ -52,7 +52,14 @@ def muestra_tablero(tablero,tamano):
     print("")
 
 # Selecciona de los diferentes disparos con condiciones adicionales
-def disparos(tablero, d, fila, col):
+def disparos(tablero, d, fila, col):       
+    
+  #Verificar si está el disparo es una esquina
+  esquina=(fila == 0 and col == 0) or \
+          (fila == 0 and col == tamano - 1) or \
+          (fila == tamano - 1 and col == 0) or \
+          (fila == tamano - 1 and col == tamano - 1)
+          
   # Disparo simple (‘-’)
   if d=="-":
     tablero[fila][col]= "0"
@@ -136,19 +143,6 @@ def disparos(tablero, d, fila, col):
     print("Disparo no existente")
     return tablero
 
-#Función para escoger aleatoriamente el disparo en modo automático
-#def tiro_random(min_nave,m,tamaño):
-    #disp_rand=0
-    #while disp_rand<min_nave:
-        #lista_disparos = ["o","*","-","+","\\","/","X"]
-        #d = rd.choice(lista_disparos)
-        #print("Disparo actual: ", d) 
-        #disp_rand+=1
-        #fila = rd.randint(0, tamano-1)
-        #col = rd.randint(0,tamano-1) 
-    #return d, fila, col
-    
-
 #-------------------------Inicio del juego (menu)------------------------------
 def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
     modojuego=(input("Bienvenido a Batalla Naval: n\ Escoja el modo de juego: Automático (A) o Manual (M): "))
@@ -163,7 +157,10 @@ def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
         # Para acumular disparos
         borra = 0
         while True:
-            if "X" in Tablero[0] or "X" in Tablero[1] or "X" in Tablero[2] or "X" in Tablero[3] or "X" in Tablero[4] or "X" in Tablero[5] or "X" in Tablero[6] or "X" in Tablero[7]:
+            if "X" in Tablero[0] or "X" in Tablero[1] or \
+                "X" in Tablero[2] or "X" in Tablero[3] or \
+                    "X" in Tablero[4] or "X" in Tablero[5] or \
+                        "X" in Tablero[6] or "X" in Tablero[7]:
                 disp_rand=0
                 while disp_rand<min_nave:
                     lista_disparos = ["o","*","-","+","\\","/","X"]
@@ -176,7 +173,8 @@ def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
                     muestra_tablero(Tablero,tamano)
                     borra+=1
             else: 
-                print("El juego ha terminado. Es hora de calcular la puntuación")
+                print("El juego ha terminado. Es hora de calcular la \
+                      puntuación")
                 break
         
     elif modojuego in "Mm":
@@ -186,19 +184,24 @@ def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
 
         borra = 0
         while True:
-            if "X" in Tablero[0] or "X" in Tablero[1] or "X" in Tablero[2] or "X" in Tablero[3] or "X" in Tablero[4] or "X" in Tablero[5] or "X" in Tablero[6] or "X" in Tablero[7]:
-                d = (input("Introduce el tipo de disparo: (o, *, -, +, \, /, X)"))
+            if "X" in Tablero[0] or "X" in Tablero[1] or "X" in Tablero[2] or\
+                "X" in Tablero[3] or "X" in Tablero[4] or "X" in Tablero[5] or\
+                    "X" in Tablero[6] or "X" in Tablero[7]:
+                d = (input("Introduce el tipo de disparo:\
+                           (o, *, -, +, \, /, X)"))
                 fila = int(input("Introduce la coordanada de la fila: "))-1
                 col = int(input("Introduce la coordanada de la columna: "))-1
                 Tablero = disparos(Tablero, d, fila, col)
                 muestra_tablero(Tablero,tamano)
                 borra+=1
             else: 
-                print("El juego ha terminado. Es hora de calcular la puntuación")
+                print("El juego ha terminado. Es hora de calcular la \
+                      puntuación")
                 break
         else:
             print("Escoga uno de los modos")
-            modojuego= (input("Bienvenido a Batalla Naval: n\ Escoja el modo de juego: Automático (A) o Manual (M): "))
+            modojuego= (input("Bienvenido a \Batalla Naval: \n Escoja el \
+                              modo de juego: Automático (A) o Manual (M): "))
     
     final = (35-borra)*10
     print("Your final grade is {}!".format(final))
