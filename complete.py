@@ -317,8 +317,53 @@ def disparos(tablero, d, fila, col):
       tablero[fila][col+1] = "0"
       tablero[fila+1][col+1] = "0"
       return tablero
-    else:
-      print("¡No se puede usar este tipo de disparo en los bordes!")
+    elif fila == 0 and col == 0:
+      tablero[fila+1][col] = "0""
+      tablero[fila][col+1] = "0"
+      tablero[fila+1][col+1] = "0"
+      return tablero
+    elif fila == 7 and col == 0:
+      tablero[fila-1][col] = "0"
+      tablero[fila-1][col+1] = "0"
+      tablero[fila][col+1] = "0"
+      return tablero
+    elif fila == 0 and col == 7:
+      tablero[fila][col-1] = "0"
+      tablero[fila+1][col-1] = "0"
+      tablero[fila+1][col] = "0"
+      return tablero
+    elif fila == 7 and col == 7:
+      tablero[fila-1][col-1] = "0"
+      tablero[fila][col-1] = "0"
+      tablero[fila-1][col] = "0"
+      return tablero
+    elif fila == 0 and col in range(1,7):
+      tablero[fila][col-1] = "0"
+      tablero[fila+1][col-1] = "0"
+      tablero[fila+1][col] = "0"
+      tablero[fila][col+1] = "0"
+      tablero[fila+1][col+1] = "0"
+      return tablero
+    elif fila == 7 and col == range(1,7):
+      tablero[fila-1][col-1] = "0"
+      tablero[fila][col-1] = "0"
+      tablero[fila-1][col] = "0"
+      tablero[fila-1][col+1] = "0"
+      tablero[fila][col+1] = "0"
+      return tablero
+    elif fila in range(1,7) and col == 0:
+      tablero[fila-1][col] = "0"
+      tablero[fila+1][col] = "0"
+      tablero[fila-1][col+1] = "0"
+      tablero[fila][col+1] = "0"
+      tablero[fila+1][col+1] = "0"
+      return tablero
+    elif fila in range(1,7) and col == 7:
+      tablero[fila-1][col-1] = "0"
+      tablero[fila][col-1] = "0"
+      tablero[fila+1][col-1] = "0"
+      tablero[fila-1][col] = "0"
+      tablero[fila+1][col] = "0"
       return tablero
   else:
     print("Disparo no existente")
