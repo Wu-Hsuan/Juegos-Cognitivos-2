@@ -430,7 +430,7 @@ def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
                               modo de juego: Automático (A) o Manual (M): "))
     
     final = (35-borra)*10
-    print("Your final grade is {}!".format(final))
+    print("Tu puntuación final es {}!".format(final))
 
 # Inicializar el juego  
 m = creaMatriz(tamano)
