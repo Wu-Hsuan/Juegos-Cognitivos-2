@@ -109,7 +109,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila+1][col]= "0"
       tablero[fila+1][col+1]= "0"
       return tablero
-    elif fila in 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila][col]= "0"
       tablero[fila-1][col-1]= "0"
       tablero[fila][col-1]= "0"
@@ -168,7 +168,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila][col-1]= "0"
       tablero[fila][col+1]= "0"
       return tablero
-    elif fila in 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila][col]= "0"
       tablero[fila-1][col]= "0"
       tablero[fila][col-1]= "0"
@@ -216,7 +216,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila+1][col+1]= "0"
       tablero[fila+1][col-1]= "0"
       return tablero
-    elif fila == 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila][col]= "0"
       tablero[fila-1][col+1]= "0"
       tablero[fila-1][col-1]= "0"
@@ -256,7 +256,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila][col]= "0"
       tablero[fila+1][col-1]= "0"
       return tablero
-    elif fila == 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila][col]= "0"
       tablero[fila-1][col+1]= "0"
       return tablero
@@ -293,7 +293,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila][col]= "0"
       tablero[fila+1][col+1] = "0"
       return tablero
-    elif fila == 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila][col]= "0"
       tablero[fila-1][col-1]= "0"
       return tablero
@@ -318,7 +318,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila+1][col+1] = "0"
       return tablero
     elif fila == 0 and col == 0:
-      tablero[fila+1][col] = "0""
+      tablero[fila+1][col] = "0"
       tablero[fila][col+1] = "0"
       tablero[fila+1][col+1] = "0"
       return tablero
@@ -344,7 +344,7 @@ def disparos(tablero, d, fila, col):
       tablero[fila][col+1] = "0"
       tablero[fila+1][col+1] = "0"
       return tablero
-    elif fila == 7 and col == range(1,7):
+    elif fila == 7 and col in range(1,7):
       tablero[fila-1][col-1] = "0"
       tablero[fila][col-1] = "0"
       tablero[fila-1][col] = "0"
@@ -395,6 +395,7 @@ def menu(min_nave, coloca_barcos, muestra_tablero, disparos, m):
                     disp_rand+=1
                     fila = rd.randint(0, tamano-1)
                     col = rd.randint(0,tamano-1) 
+                    print(fila, col)
                     Tablero = disparos(Tablero, d, fila, col)
                     muestra_tablero(Tablero,tamano)
                     borra+=1
